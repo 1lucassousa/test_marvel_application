@@ -30,7 +30,6 @@ class _CharacterPageState extends State<CharacterPage> {
               _scrollController.position.maxScrollExtent &&
           CharacterPageController.page + 1 <
               CharacterPageController.totalPages()) {
-        print("Entrou!");
         _getMoreData();
       }
     });
@@ -67,7 +66,6 @@ class _CharacterPageState extends State<CharacterPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(CharacterPageController.getIsList());
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -88,6 +86,7 @@ class _CharacterPageState extends State<CharacterPage> {
               child: Icon(
                 Icons.list_alt_sharp,
                 size: 26.0,
+                color: CharacterPageController.getIsList() ? Colors.black : Colors.white,
               ),
             ),
           ),
@@ -103,8 +102,9 @@ class _CharacterPageState extends State<CharacterPage> {
                 }
               },
               child: Icon(
-                Icons.view_quilt_outlined,
-                size: 30.0,
+                Icons.view_column_outlined,
+                size: 32.0,
+                color: CharacterPageController.getIsList() ? Colors.white : Colors.black,
               ),
             ),
           ),
