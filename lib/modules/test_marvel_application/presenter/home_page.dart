@@ -52,8 +52,10 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text('Sair'),
-              onTap: () {},
+              title: Text('Info'),
+              onTap: () {
+                _info(context, 'Developed by LUCAS SOUSA');
+              },
             ),
           ],
         ),
@@ -210,6 +212,27 @@ class HomePage extends StatelessWidget {
             TextButton(
               child: Text("Ok"),
               onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  _info(BuildContext context, String msg) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Info"),
+          content: Text(msg),
+          actions: <Widget>[
+            TextButton(
+              child: Text("Ok"),
+              onPressed: () {
+                Navigator.pop(context);
                 Navigator.pop(context);
               },
             )
