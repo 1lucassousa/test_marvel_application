@@ -34,7 +34,6 @@ dependencies:
   dartz:
   crypto:
   url_launcher: ^6.0.12
-  photo_view: ^0.10.3
   custom_progress_dialog: ^1.0.5
   flutter_translate: ^3.0.1
   flutter_modular:
