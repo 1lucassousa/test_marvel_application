@@ -20,17 +20,78 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text('Lucas de Jesus Sousa'),
+              accountEmail: Text('Test for Flutter Developer'),
+              currentAccountPicture: CircleAvatar(
+                radius: 30,
+                child: Image.asset("assets/user.png"),
+              ),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.red.shade900,
+                    Colors.red.shade700,
+                    Colors.red.shade500,
+                    Colors.red.shade300,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset(5, 5),
+                    blurRadius: 10,
+                  )
+                ],
+              ),
+            ),
+            ListTile(
+              title: Text('Sair'),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
-        title: Text('Marvel Application'),
+        title: Text(
+          'Marvel',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.red.shade900,
+                Colors.red.shade700,
+                Colors.red.shade500,
+                Colors.red.shade300,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                offset: Offset(5, 5),
+                blurRadius: 10,
+              )
+            ],
+          ),
+        ),
       ),
       body: Container(
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              TextButton(
-                child: Text("All Character"),
-                onPressed: () async {
+              GestureDetector(
+                onTap: () async {
                   _progressDialog.showProgressDialog(context);
 
                   CharacterPageController.clear();
@@ -53,10 +114,42 @@ class HomePage extends StatelessWidget {
                     _alert(context, (result).error.status);
                   }
                 },
+                child: Container(
+                  width: 150,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.red.shade900,
+                        Colors.red.shade700,
+                        Colors.red.shade500,
+                        Colors.red.shade300,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        offset: Offset(5, 5),
+                        blurRadius: 10,
+                      )
+                    ],
+                  ),
+                  child: Center(
+                    child: Text(
+                      'All Characters',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
               ),
-              TextButton(
-                child: Text("Search Character"),
-                onPressed: () async {
+              GestureDetector(
+                onTap: () async {
                   CharacterPageController.clear();
                   return Navigator.push(
                     context,
@@ -65,7 +158,40 @@ class HomePage extends StatelessWidget {
                     ),
                   );
                 },
-              )
+                child: Container(
+                  width: 150,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.red.shade900,
+                        Colors.red.shade700,
+                        Colors.red.shade500,
+                        Colors.red.shade300,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        offset: Offset(5, 5),
+                        blurRadius: 10,
+                      )
+                    ],
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Search Characters',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
