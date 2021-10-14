@@ -54,6 +54,9 @@ class _CharacterPageState extends State<CharacterPage> {
                 CharacterPageController.totalPages().toString());
             isPerformingRequest = false;
           });
+        } else {
+          isPerformingRequest = false;
+          _alert(context, result);
         }
       }
     }
@@ -209,6 +212,26 @@ class _CharacterPageState extends State<CharacterPage> {
           child: new CircularProgressIndicator(),
         ),
       ),
+    );
+  }
+
+  _alert(BuildContext context, String msg) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Warning"),
+          content: Text(msg),
+          actions: <Widget>[
+            TextButton(
+              child: Text("Ok"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+      },
     );
   }
 }

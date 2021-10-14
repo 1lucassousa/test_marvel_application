@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/controller/page_controller/character_page_controller.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/presenter/character_page.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/presenter/event_to_state/character_event_to_state.dart';
+import 'package:test_marvel_application/modules/test_marvel_application/presenter/search_name_page.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/presenter/state/state.dart'
     as state;
 
@@ -24,30 +25,71 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
         child: Center(
-          child: TextButton(
-            child: Text("Character Page"),
-            onPressed: () async {
-              _progressDialog.showProgressDialog(context);
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton(
+                child: Text("All Character"),
+                onPressed: () async {
+                  _progressDialog.showProgressDialog(context);
 
-              CharacterPageController.initializeOffset();
+                  CharacterPageController.clear();
 
-              var result = CharacterPageController.initializeContentCharacter(
-                  await _request("Hulk"));
+                  var result =
+                      CharacterPageController.initializeContentCharacter(
+                          await _request(""));
 
-              if (result == state.CharacterSuccess) {
-                _progressDialog.dismissProgressDialog(context);
+                  if (result == state.CharacterSuccess) {
+                    _progressDialog.dismissProgressDialog(context);
 
-                return Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CharacterPage(),
-                  ),
-                );
-              }
-            },
+                    return Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CharacterPage(),
+                      ),
+                    );
+                  } else {
+                    _progressDialog.dismissProgressDialog(context);
+                    _alert(context, (result).error.status);
+                  }
+                },
+              ),
+              TextButton(
+                child: Text("Search Character"),
+                onPressed: () async {
+                  CharacterPageController.clear();
+                  return Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SearchNamePage(),
+                    ),
+                  );
+                },
+              )
+            ],
           ),
         ),
       ),
+    );
+  }
+
+  _alert(BuildContext context, String msg) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Warning"),
+          content: Text(msg),
+          actions: <Widget>[
+            TextButton(
+              child: Text("Ok"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+      },
     );
   }
 }

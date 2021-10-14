@@ -7,6 +7,7 @@ import 'package:test_marvel_application/modules/test_marvel_application/domain/e
 import 'package:test_marvel_application/modules/test_marvel_application/domain/error/error.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/infra/datasource/datasource.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/infra/model/result_content_character_model.dart';
+import 'package:test_marvel_application/modules/test_marvel_application/infra/model/result_error_model.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/util/key.dart';
 
 class SearchCharacterApiDatasource implements CharacterDatasource {
@@ -26,10 +27,17 @@ class SearchCharacterApiDatasource implements CharacterDatasource {
 
     final hash = md5.convert(data);
 
+    var url;
+
     print(hash);
 
-    var url =
-        "https://gateway.marvel.com/v1/public/characters?ts=$time&apikey=$publicKey&hash=$hash&limit=100&offset=${CharacterPageController.offset}";
+    if (name.isEmpty) {
+      url =
+          "https://gateway.marvel.com/v1/public/characters?ts=$time&apikey=$publicKey&hash=$hash&limit=100&offset=${CharacterPageController.offset}";
+    } else {
+      url =
+          "https://gateway.marvel.com/v1/public/characters?ts=$time&apikey=$publicKey&hash=$hash&limit=100&offset=${CharacterPageController.offset}&nameStartsWith=$name";
+    }
 
     print(url);
 
@@ -52,7 +60,7 @@ class SearchCharacterApiDatasource implements CharacterDatasource {
       print('sucesso');
       return result;
     } else {
-      throw DatasourceError();
+      throw DatasourceError(ResultErrorModel.fromMap(response.data));
     }
   }
 }

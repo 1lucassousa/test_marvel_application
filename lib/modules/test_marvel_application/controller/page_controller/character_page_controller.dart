@@ -10,9 +10,15 @@ class CharacterPageController {
     if (request is state.CharacterSuccess) {
       CharacterController.initializeContentCharacter(
           (request).contentCharacter);
-
       return state.CharacterSuccess;
+    } else {
+      return (request).datasourceError;
     }
+  }
+
+  static clear() {
+    CharacterController.clearList();
+    initializeOffset();
   }
 
   static addCharactersToList(request) {
@@ -21,6 +27,8 @@ class CharacterPageController {
           (request).contentCharacter.results);
 
       return state.CharacterSuccess;
+    } else {
+      return (request).datasourceError;
     }
   }
 
@@ -29,7 +37,6 @@ class CharacterPageController {
   }
 
   static initializeOffset() {
-    print('foi?!');
     offset = 0;
   }
 

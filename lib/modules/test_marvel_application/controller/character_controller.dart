@@ -10,4 +10,8 @@ class CharacterController {
   static addCharactersToList(data) {
     contentCharacterModel.results.addAll(data);
   }
+
+  static clearList() {
+    contentCharacterModel = null;
+  }
 }
