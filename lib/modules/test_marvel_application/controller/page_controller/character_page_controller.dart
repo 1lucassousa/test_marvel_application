@@ -5,6 +5,7 @@ import 'package:test_marvel_application/modules/test_marvel_application/presente
 class CharacterPageController {
   static int offset;
   static int page = 0;
+  static bool isList = true;
 
   static initializeContentCharacter(request) {
     if (request is state.CharacterSuccess) {
@@ -34,6 +35,14 @@ class CharacterPageController {
 
   static totalPages() {
     return (CharacterController.contentCharacterModel.total / 100).round();
+  }
+
+  static getIsList() {
+    return isList;
+  }
+
+  static setIsList(value) {
+    isList = value;
   }
 
   static initializeOffset() {
