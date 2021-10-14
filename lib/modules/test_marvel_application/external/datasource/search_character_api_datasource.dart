@@ -17,6 +17,7 @@ class SearchCharacterApiDatasource implements CharacterDatasource {
 
   @override
   Future<ContentCharacter> searchCharacter(String name) async {
+
     final time = int.parse(DateTime.now().month.toString() +
         DateTime.now().day.toString() +
         DateTime.now().year.toString());

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:test_marvel_application/app_widget.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/domain/usecase/search_character.dart';
-import 'package:test_marvel_application/modules/test_marvel_application/external/datasource/character_api_datasource.dart';
+import 'package:test_marvel_application/modules/test_marvel_application/external/datasource/search_character_api_datasource.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/infra/repository/search_character_repository.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/presenter/character_page.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/presenter/details_page.dart';
