@@ -56,6 +56,9 @@ class _SearchNamePageState extends State<SearchNamePage> {
         padding: EdgeInsets.all(10),
         child: ListView(
           children: [
+            SizedBox(
+              height: 10,
+            ),
             _textFormField("Name", controller: nameController),
             Container(
               width: 200,
@@ -101,7 +104,11 @@ class _SearchNamePageState extends State<SearchNamePage> {
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text('Result Search'),
+                      Text(
+                        'Result Search',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
                       SizedBox(
                         height: 10,
                       ),
