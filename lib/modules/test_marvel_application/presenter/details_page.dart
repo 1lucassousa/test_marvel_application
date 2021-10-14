@@ -102,162 +102,234 @@ class DetailsPage extends StatelessWidget {
               ),
             ),
             Card(
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ExpansionTile(
+                    title: Text(
                       "Comics",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      child: hero.comics.available != 0
-                          ? ListView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: hero.comics.items.length,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    RichText(
-                                      text: TextSpan(
-                                          text: "- ",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                              text:
-                                                  hero.comics.items[index].name,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.normal,
-                                                  color: Colors.black),
-                                            ),
-                                          ]),
-                                    )
-                                  ],
-                                );
-                              },
-                            )
-                          : Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Without Stories Data")
-                              ],
-                            ),
-                    )
-                  ],
-                ),
+                    children: [
+                      Container(
+                        padding:
+                            EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                        child: hero.comics.available != 0
+                            ? ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: hero.comics.items.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      RichText(
+                                        text: TextSpan(
+                                            text: "- ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: hero
+                                                    .comics.items[index].name,
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black),
+                                              ),
+                                            ]),
+                                      )
+                                    ],
+                                  );
+                                },
+                              )
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text("Without Stories Data")
+                                ],
+                              ),
+                      )
+                    ],
+                  )
+                ],
               ),
             ),
             Card(
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ExpansionTile(
+                    title: Text(
                       "Series",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      child: hero.series.available != 0
-                          ? ListView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: hero.series.items.length,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    RichText(
-                                      text: TextSpan(
-                                          text: "- ",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                              text:
-                                                  hero.series.items[index].name,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.normal,
-                                                  color: Colors.black),
-                                            ),
-                                          ]),
-                                    )
-                                  ],
-                                );
-                              },
-                            )
-                          : Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Without Series Data")
-                              ],
-                            ),
-                    )
-                  ],
-                ),
+                    children: [
+                      Container(
+                        padding:
+                            EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                        child: hero.series.available != 0
+                            ? ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: hero.series.items.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      RichText(
+                                        text: TextSpan(
+                                            text: "- ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: hero
+                                                    .series.items[index].name,
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black),
+                                              ),
+                                            ]),
+                                      )
+                                    ],
+                                  );
+                                },
+                              )
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text("Without Series Data")
+                                ],
+                              ),
+                      )
+                    ],
+                  )
+                ],
               ),
             ),
             Card(
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ExpansionTile(
+                    title: Text(
                       "Stories",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
+                    children: [
+                      Container(
+                        padding:
+                            EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                        child: hero.stories.available != 0
+                            ? ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: hero.stories.items.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      RichText(
+                                        text: TextSpan(
+                                            text: "- ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: hero
+                                                    .stories.items[index].name,
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black),
+                                              ),
+                                            ]),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 10, right: 10),
+                                        child: Text(
+                                            hero.stories.items[index].type),
+                                      )
+                                    ],
+                                  );
+                                },
+                              )
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text("Without Stories Data")
+                                ],
+                              ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Card(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ExpansionTile(
+                    title: Text(
+                      "Events",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                     ),
-                    Container(
-                      child: hero.stories.available != 0
-                          ? ListView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: hero.stories.items.length,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    RichText(
-                                      text: TextSpan(
+                    children: [
+                      Container(
+                        padding:
+                            EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                        child: hero.events.available != 0
+                            ? ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: hero.events.items.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      RichText(
+                                        text: TextSpan(
                                           text: "- ",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -270,147 +342,78 @@ class DetailsPage extends StatelessWidget {
                                                   fontWeight: FontWeight.normal,
                                                   color: Colors.black),
                                             ),
-                                          ]),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                      child:
-                                          Text(hero.stories.items[index].type),
-                                    )
-                                  ],
-                                );
-                              },
-                            )
-                          : Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Without Stories Data")
-                              ],
-                            ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Card(
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Events",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      child: hero.events.available != 0
-                          ? ListView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: hero.events.items.length,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    RichText(
-                                      text: TextSpan(
-                                        text: "- ",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black),
-                                        children: <TextSpan>[
-                                          TextSpan(
-                                            text:
-                                                hero.stories.items[index].name,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.normal,
-                                                color: Colors.black),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            )
-                          : Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Without Events Data")
-                              ],
-                            ),
-                    )
-                  ],
-                ),
+                                    ],
+                                  );
+                                },
+                              )
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text("Without Events Data")
+                                ],
+                              ),
+                      )
+                    ],
+                  )
+                ],
               ),
             ),
             Card(
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Others",
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ExpansionTile(
+                    title: Text(
+                      "Links",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      child: hero.urls.length != 0
-                          ? ListView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: hero.urls.length,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    TextButton(
-                                      child: Text(hero.urls[index].type),
-                                      onPressed: () async {
-                                        await _launchURL(hero.urls[index].url);
-                                      },
-                                    )
-                                  ],
-                                );
-                              },
-                            )
-                          : Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Without Other Data")
-                              ],
-                            ),
-                    )
-                  ],
-                ),
+                    children: [
+                      Container(
+                        padding:
+                            EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                        child: hero.urls.length != 0
+                            ? ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: hero.urls.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        child: Text(hero.urls[index].type),
+                                        onPressed: () async {
+                                          await _launchURL(
+                                              hero.urls[index].url);
+                                        },
+                                      )
+                                    ],
+                                  );
+                                },
+                              )
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text("Without Other Data")
+                                ],
+                              ),
+                      )
+                    ],
+                  )
+                ],
               ),
             )
           ],
