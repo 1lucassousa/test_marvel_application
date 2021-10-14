@@ -49,9 +49,6 @@ class _CharacterPageState extends State<CharacterPage> {
 
         if (result == state.CharacterSuccess) {
           setState(() {
-            print("Pagina Atual: " + CharacterPageController.page.toString());
-            print("Total pagina: " +
-                CharacterPageController.totalPages().toString());
             isPerformingRequest = false;
           });
         } else {
@@ -94,7 +91,6 @@ class _CharacterPageState extends State<CharacterPage> {
                         onTap: () {
                           setState(
                             () {
-                              print(index);
                               i = index;
                             },
                           );

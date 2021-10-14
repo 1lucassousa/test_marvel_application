@@ -24,7 +24,6 @@ class ResultContentCharacterModel extends ContentCharacter {
   }
 
   factory ResultContentCharacterModel.fromMap(Map<String, dynamic> map) {
-    print(map['data']['total']);
     return ResultContentCharacterModel(
       offset: map['data']['offset'],
       limit: map['data']['limit'],

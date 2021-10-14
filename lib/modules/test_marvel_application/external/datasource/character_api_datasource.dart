@@ -17,8 +17,6 @@ class SearchCharacterApiDatasource implements CharacterDatasource {
 
   @override
   Future<ContentCharacter> searchCharacter(String name) async {
-    print("1");
-
     final time = int.parse(DateTime.now().month.toString() +
         DateTime.now().day.toString() +
         DateTime.now().year.toString());
@@ -29,8 +27,6 @@ class SearchCharacterApiDatasource implements CharacterDatasource {
 
     var url;
 
-    print(hash);
-
     if (name.isEmpty) {
       url =
           "https://gateway.marvel.com/v1/public/characters?ts=$time&apikey=$publicKey&hash=$hash&limit=100&offset=${CharacterPageController.offset}";
@@ -38,8 +34,6 @@ class SearchCharacterApiDatasource implements CharacterDatasource {
       url =
           "https://gateway.marvel.com/v1/public/characters?ts=$time&apikey=$publicKey&hash=$hash&limit=100&offset=${CharacterPageController.offset}&nameStartsWith=$name";
     }
-
-    print(url);
 
     var response = await dio.get(
       url,
@@ -51,13 +45,8 @@ class SearchCharacterApiDatasource implements CharacterDatasource {
       ),
     );
 
-    print(response.data);
-    print(response.statusCode);
-
     if (response.statusCode == 200) {
-      print('2');
       final result = ResultContentCharacterModel.fromMap(response.data);
-      print('sucesso');
       return result;
     } else {
       throw DatasourceError(ResultErrorModel.fromMap(response.data));

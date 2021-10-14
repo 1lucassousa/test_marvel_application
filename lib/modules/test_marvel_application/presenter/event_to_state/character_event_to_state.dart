@@ -8,8 +8,6 @@ class CharacterEventToState {
 
   Future mapEventToState(String name) async {
     final result = await usecase(name);
-    print("Event0");
-    print(result);
     return result.fold((l) => Error(l), (r) => CharacterSuccess(r));
   }
 }

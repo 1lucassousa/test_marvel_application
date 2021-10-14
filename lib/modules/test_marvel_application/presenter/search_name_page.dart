@@ -88,8 +88,6 @@ class _SearchNamePageState extends State<SearchNamePage> {
                           itemCount: CharacterController
                               .contentCharacterModel.results.length,
                           itemBuilder: (context, index) {
-                            print(CharacterController
-                                .contentCharacterModel.results.length);
                             return ListTile(
                               contentPadding: EdgeInsets.all(10),
                               leading: CircleAvatar(

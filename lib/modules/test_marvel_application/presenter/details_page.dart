@@ -399,7 +399,6 @@ class DetailsPage extends StatelessWidget {
   }
 
   _launchURL(String path) async {
-    print(path);
     var url = path;
     if (await canLaunch(url)) {
       await launch(url);
