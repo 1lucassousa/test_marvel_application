@@ -40,6 +40,7 @@ class DetailsPage extends StatelessWidget {
             Container(
               height: 300,
               decoration: BoxDecoration(
+                border: Border.all(width: 2),
                 image: DecorationImage(
                   fit: BoxFit.fill,
                   image: NetworkImage(hero.imagePath),
