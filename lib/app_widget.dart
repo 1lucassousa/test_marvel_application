@@ -11,8 +11,8 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.red,
-          fontFamily: 'PTSerif',
-          appBarTheme: AppBarTheme(color: Colors.red)),
+          //fontFamily: 'PTSerif',
+          appBarTheme: AppBarTheme(color: Colors.transparent)),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

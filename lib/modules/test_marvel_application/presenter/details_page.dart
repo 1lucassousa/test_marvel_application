@@ -10,7 +10,28 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(hero.name),
+        title: Text(hero.name, style: TextStyle(fontWeight: FontWeight.bold)),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.red.shade900,
+                Colors.red.shade700,
+                Colors.red.shade500,
+                Colors.red.shade300,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                offset: Offset(5, 5),
+                blurRadius: 10,
+              )
+            ],
+          ),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.all(10),

@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/presenter/home_page.dart';
 
-class SpashPage extends StatefulWidget {
+class SplashPage extends StatefulWidget {
   @override
-  _SpashPageState createState() => _SpashPageState();
+  _SplashPageState createState() => _SplashPageState();
 }
 
-class _SpashPageState extends State<SpashPage> {
+class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
@@ -25,8 +25,9 @@ class _SpashPageState extends State<SpashPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.red.shade900,
       child: Center(
-        
+        child: Image.asset("assets/giphy.gif"),
       ),
     );
   }

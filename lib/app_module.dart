@@ -9,6 +9,8 @@ import 'package:test_marvel_application/modules/test_marvel_application/presente
 import 'package:test_marvel_application/modules/test_marvel_application/presenter/details_page.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/presenter/event_to_state/character_event_to_state.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/presenter/home_page.dart';
+import 'package:test_marvel_application/modules/test_marvel_application/presenter/search_name_page.dart';
+import 'package:test_marvel_application/modules/test_marvel_application/presenter/splash_page.dart';
 
 class AppModule extends MainModule {
   @override
@@ -24,9 +26,11 @@ class AppModule extends MainModule {
   @override
   // implement routers
   List<ModularRouter> get routers => [
+        ModularRouter('/', child: (_, __) => SplashPage()),
         ModularRouter('/', child: (_, __) => HomePage()),
         ModularRouter('/', child: (_, __) => CharacterPage()),
-        ModularRouter('/', child: (_, __) => DetailsPage())
+        ModularRouter('/', child: (_, __) => DetailsPage()),
+        ModularRouter('/', child: (_, __) => SearchNamePage()),
       ];
 
   @override
