@@ -86,7 +86,9 @@ class _CharacterPageState extends State<CharacterPage> {
               child: Icon(
                 Icons.list_alt_sharp,
                 size: 26.0,
-                color: CharacterPageController.getIsList() ? Colors.black : Colors.white,
+                color: CharacterPageController.getIsList()
+                    ? Colors.black
+                    : Colors.white,
               ),
             ),
           ),
@@ -102,9 +104,11 @@ class _CharacterPageState extends State<CharacterPage> {
                 }
               },
               child: Icon(
-                Icons.view_column_outlined,
+                Icons.view_comfortable,
                 size: 32.0,
-                color: CharacterPageController.getIsList() ? Colors.white : Colors.black,
+                color: CharacterPageController.getIsList()
+                    ? Colors.white
+                    : Colors.black,
               ),
             ),
           ),
@@ -169,130 +173,49 @@ class _CharacterPageState extends State<CharacterPage> {
     );
   }
 
-  ListView buildListViewHorizontal(BuildContext context) {
-    return ListView(
-      children: [
-        Container(
-          padding: EdgeInsets.only(top: 10, bottom: 10),
-          height: MediaQuery.of(context).size.height * 0.175,
-          child: ListView.builder(
-            controller: _scrollController,
-            scrollDirection: Axis.horizontal,
-            itemCount:
-                CharacterController.contentCharacterModel.results.length + 1,
-            itemBuilder: (context, index) {
-              if (index ==
-                  CharacterController.contentCharacterModel.results.length) {
-                return _buildProgressIndicator();
-              } else {
-                return Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        setState(
-                          () {
-                            i = index;
-                          },
-                        );
-                      },
-                      child: Container(
-                        padding: EdgeInsets.only(right: 10),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(CharacterController
-                                      .contentCharacterModel
-                                      .results[index]
-                                      .imagePath),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              child: Text(CharacterController
-                                  .contentCharacterModel
-                                  .results[index]
-                                  .characterName),
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                );
-              }
-            },
-          ),
-        ),
-        i != null
-            ? Container(
-                height: MediaQuery.of(context).size.height * 0.825,
-                child: ListView(
-                  children: [
-                    Container(
-                      height: 250,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: NetworkImage(CharacterController
-                              .contentCharacterModel.results[i].imagePath),
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: Column(
-                        children: [
-                          Text(
-                            CharacterController
-                                .contentCharacterModel.results[i].name,
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            CharacterController.contentCharacterModel.results[i]
-                                    .description.isEmpty
-                                ? "Without Description"
-                                : CharacterController.contentCharacterModel
-                                    .results[i].description,
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            width: 200,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
-                              child: Text('More Information'),
-                              onPressed: () {
-                                return Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => DetailsPage(
-                                        CharacterController
-                                            .contentCharacterModel.results[i]),
-                                  ),
-                                );
-                              },
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
+  GridView buildListViewHorizontal(BuildContext context) {
+    return GridView.builder(
+      controller: _scrollController,
+      gridDelegate:
+          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+      itemCount: CharacterController.contentCharacterModel.results.length + 1,
+      itemBuilder: (context, index) {
+        if (index == CharacterController.contentCharacterModel.results.length) {
+          return _buildProgressIndicator();
+        } else {
+          return GestureDetector(
+            onTap: () {
+              return Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsPage(
+                      CharacterController.contentCharacterModel.results[index]),
                 ),
-              )
-            : Container()
-      ],
+              );
+            },
+            child: Column(
+              children: [
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 2),
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: NetworkImage(CharacterController
+                          .contentCharacterModel.results[index].imagePath),
+                    ),
+                  ),
+                ),
+                Container(
+                  child: Text(CharacterController
+                      .contentCharacterModel.results[index].characterName),
+                )
+              ],
+            ),
+          );
+        }
+      },
     );
   }
 
