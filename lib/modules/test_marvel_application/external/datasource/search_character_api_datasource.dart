@@ -7,7 +7,6 @@ import 'package:test_marvel_application/modules/test_marvel_application/domain/e
 import 'package:test_marvel_application/modules/test_marvel_application/domain/error/error.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/infra/datasource/datasource.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/infra/model/result_content_character_model.dart';
-import 'package:test_marvel_application/modules/test_marvel_application/infra/model/result_error_model.dart';
 import 'package:test_marvel_application/modules/test_marvel_application/util/key.dart';
 
 class SearchCharacterApiDatasource implements CharacterDatasource {
@@ -17,7 +16,6 @@ class SearchCharacterApiDatasource implements CharacterDatasource {
 
   @override
   Future<ContentCharacter> searchCharacter(String name) async {
-
     final time = int.parse(DateTime.now().month.toString() +
         DateTime.now().day.toString() +
         DateTime.now().year.toString());
@@ -36,21 +34,13 @@ class SearchCharacterApiDatasource implements CharacterDatasource {
           "https://gateway.marvel.com/v1/public/characters?ts=$time&apikey=$publicKey&hash=$hash&limit=100&offset=${CharacterPageController.offset}&nameStartsWith=$name";
     }
 
-    var response = await dio.get(
-      url,
-      options: Options(
-        followRedirects: false,
-        validateStatus: (status) {
-          return status <= 500;
-        },
-      ),
-    );
+    var response = await dio.get(url);
 
     if (response.statusCode == 200) {
       final result = ResultContentCharacterModel.fromMap(response.data);
       return result;
     } else {
-      throw DatasourceError(ResultErrorModel.fromMap(response.data));
+      throw DatasourceError();
     }
   }
 }

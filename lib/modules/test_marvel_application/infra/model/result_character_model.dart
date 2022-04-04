@@ -36,7 +36,7 @@ class ResultCharacterModel extends Character {
 
   get characterName {
     var list = name.split("(");
-    return list[0];
+    return list.first;
   }
 
   Map<String, dynamic> toMap() {

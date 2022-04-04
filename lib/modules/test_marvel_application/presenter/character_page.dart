@@ -208,8 +208,10 @@ class _CharacterPageState extends State<CharacterPage> {
                   ),
                 ),
                 Container(
-                  child: Text(CharacterController
-                      .contentCharacterModel.results[index].characterName),
+                  child: FittedBox(
+                    child: Text(CharacterController
+                        .contentCharacterModel.results[index].characterName),
+                  ),
                 )
               ],
             ),
