@@ -392,7 +392,10 @@ class DetailsPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       TextButton(
-                                        child: Text(hero.urls[index].type),
+                                        child: Text(
+                                          hero.urls[index].type,
+                                          textAlign: TextAlign.left,
+                                        ),
                                         onPressed: () async {
                                           await _launchURL(
                                               hero.urls[index].url);

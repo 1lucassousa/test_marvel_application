@@ -135,9 +135,15 @@ class _CharacterPageState extends State<CharacterPage> {
           ),
         ),
       ),
-      body: CharacterPageController.getIsList()
-          ? buildListViewVertical(context)
-          : buildListViewHorizontal(context),
+      body: Padding(
+        padding: EdgeInsets.only(
+          top: 10,
+          bottom: 10,
+        ),
+        child: CharacterPageController.getIsList()
+            ? buildListViewVertical(context)
+            : buildListViewHorizontal(context),
+      ),
     );
   }
 
